@@ -10,15 +10,19 @@ var Twit = require('twit');
 module.exports = {
 	tweet: function(req,res){
 
-		var T = new Twit({
-		    consumer_key:         config.TWITTER_KEY
-		  , consumer_secret:      config.TWITTER_SECRET
-		  , access_token:         '...'
-		  , access_token_secret:  '...'
-		})
+		User.findOne(req.userId, function (err, user) {
 
-		T.post('statuses/update', { status: 'hello world!' }, function(err, data, response) {
-		  	console.log(data)
+			var T = new Twit({
+			  consumer_key: config.TWITTER_KEY,
+			  consumer_secret: config.TWITTER_SECRET,
+			  access_token: user.twitterToken,
+			  access_token_secret: user.twitterSecret
+			})
+
+			T.post('statuses/update', { status: 'Tweeting from the backend of my new #sailsjs app, wazzup... SECOND TEST' }, function(err, data, response) {
+			  	console.log(data)
+			})
+
 		})
 	}
 };
