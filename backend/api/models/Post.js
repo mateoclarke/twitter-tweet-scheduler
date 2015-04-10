@@ -5,11 +5,14 @@
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
-module.exports = {
+	module.exports = {
 
-  attributes: {
-  	message: 'string',
-  	datetime: 'datetime'
-  }
-};
+	  attributes: {
+	  	message: 'string',
+	  	datetime: 'datetime',
+	  	owner: { 
+	  		model: 'user' 
+	  	}
+	  }
+	};
 
