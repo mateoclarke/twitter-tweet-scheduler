@@ -13,6 +13,7 @@ module.exports = {
 		User.findOne(req.userId, function (err, user) {
 
 			var message = req.body.message;
+			var datetime = req.body.datetime;
 
 			var T = new Twit({
 			  consumer_key: config.TWITTER_KEY,
