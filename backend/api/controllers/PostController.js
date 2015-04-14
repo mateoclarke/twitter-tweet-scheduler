@@ -20,7 +20,8 @@ module.exports = {
 				datetime: datetime,
 				owner: req.userId
 			}).exec(function(err, post){
-				console.log("working", post, err)
+				console.log("working", post, err);
+				res.status(200).end();
 			})
 
 			// var T = new Twit({
